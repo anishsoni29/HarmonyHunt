@@ -1,24 +1,24 @@
 # 🎧 HarmonyHunt: A Shazam-like Audio Recognition Algorithm
 
-Audio fingerprinting and recognition algorithm implemented in Python. 
+Audio fingerprinting and recognition algorithm implemented in Python.
 
 Users may create a customized music database, view spectral analyses of a song, and identify a song from noisy snippets. Main functionality of this program has been tested on Windows 10.
-
 
 ## Dependencies
 
 **Software**
+
 - `ffmpeg` for converting audio files to .wav format
 - `PostgreSQL` for database construction
 
 **Python packages**
+
 - `pydub` a Python ffmpeg wrapper
 - `eyed3` for reading mp3 metadata
 - `numpy` for audio signals transformations
 - `scipy` used in spectrogram and peak finding algorithms
 - `matplotlib` used for spectrogram plots
 - `psycopg2` a Python-PostgreSQL database adapter
-
 
 ## Installation
 
@@ -37,16 +37,15 @@ DB_PASSWORD = your-db-password
 
 Now you're ready to start fingerprinting your audio collection!
 
-
 ## Description
 
 This program has the following functionalities:
 
 **Database construction**
 
-This program allows you to build your own music database at 1-click! 
- 
-To get started, please copy your music files (preferably in mp3 format) into the freezam/music/mp3 folder. You'll notice that the folder already contains some pre-downloaded music files for testing purposes. Feel free to add or remove files in the folder. 
+This program allows you to build your own music database at 1-click!
+
+To get started, please copy your music files (preferably in mp3 format) into the freezam/music/mp3 folder. You'll notice that the folder already contains some pre-downloaded music files for testing purposes. Feel free to add or remove files in the folder.
 
 Then run the following command in the terminal:
 
@@ -98,7 +97,9 @@ python interface.py admin --action=rm_dup
 ```
 python interface.py identify [-h] [--pathfile PATHFILE] --type=1
 ```
+
 or
+
 ```
 python interface.py identify [-h] [--pathfile PATHFILE] --type=2
 ```
@@ -118,7 +119,6 @@ This application writes a message for each action taken to a designated log file
 python interface.py -vb identify --pathfile="./music/snippet/Track54.wav" --type=2
 ```
 
-
 ## Example
 
 ```
@@ -129,7 +129,6 @@ python interface.py -vb construct
 python interface.py -vb identify --pathfile="./music/snippet/Track54.wav" --type=2
 ```
 
-
 ## Running the tests
 
 To run the automated tests for this application:
@@ -139,10 +138,16 @@ cd shazam
 pytest -v test_shazam.py
 ```
 
-## Article 
+## Article
 
 This article cleared my concepts about Audio Fingerprinting
 
 ```
 https://willdrevo.com/fingerprinting-and-audio-recognition-with-python/
+```
+
+## Reference
+
+```
+https://github.com/Lizzi-Busy/freezam/blob/master/README.md
 ```
