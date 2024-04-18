@@ -51,7 +51,7 @@ To get started, please copy your music files (preferably in mp3 format) into the
 Then run the following command in the terminal:
 
 ```bash
-cd freezam
+cd HarmonyHunt
 $python interface.py construct
 ```
 
@@ -122,7 +122,7 @@ python interface.py -vb identify --pathfile="./music/snippet/Track54.wav" --type
 ## Example
 
 ```
-cd freezam
+cd HarmonyHunt
 # create music database
 python interface.py -vb construct
 # identify a snippet (pre-downloaded)
