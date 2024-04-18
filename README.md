@@ -138,3 +138,11 @@ To run the automated tests for this application:
 cd shazam
 pytest -v test_shazam.py
 ```
+
+## Article 
+
+This article cleared my concepts about Audio Fingerprinting
+
+```
+https://willdrevo.com/fingerprinting-and-audio-recognition-with-python/
+```
