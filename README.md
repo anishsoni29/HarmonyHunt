@@ -1,4 +1,4 @@
-# HarmonyHunt: A Shazam-like Audio Recognition Algorithm
+# 🎧 HarmonyHunt: A Shazam-like Audio Recognition Algorithm
 
 Audio fingerprinting and recognition algorithm implemented in Python. 
 
