@@ -38,4 +38,16 @@ parser_identity = subparser.add_parser('identity', help='identify a snippet ')
 parser_identity.add_argument('--pathfile', type = str, help='pathfile to the snippet')
 parser_identity.add_argument('--type', type = int, help='1 or 2, fingerprint method for identification of a song')
 
+#admin
+parser_admin = subparser.add_parser('admin', help = 'administrator mode, cleanup database etc.')
+parser_admin.add_argument('--action', type=str, help='rm_dup - remove duplicates from the database')
 
+#list
+parser_list = subparser.add_parser('list', help = 'list of all songs in database')
+
+args = parser.parse_args()
+
+
+#LOG SETUP
+
+#set up logging to file
