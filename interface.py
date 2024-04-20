@@ -51,3 +51,25 @@ args = parser.parse_args()
 #LOG SETUP
 
 #set up logging to file
+logging.basicConfig(level=logging.INFO,
+                    format="%(asctime)s %(levelname)s %(message)s",
+                    datefmt='%Y-%m-%d %H:%M:%S',
+                    filename='shazam.log',
+                    filemode='w')
+
+#define a Handler which writes WARNING messages or higher to the sys
+console = logging.StreamHandler(sys.stdout)
+
+#set log level by verbose
+if args.verbose:
+    console.setLevel(logging.DEBUG)
+else:
+    console.setLevel(logging.WARNING)
+    
+formatter = logging.Formatter('%(levelname)-8s %(message)s')
+console.setFormatter(formatter)
+# add the handler to the root logger
+logging.getLogger().addHandler(console)
+
+log = logging.getLogger(__name__)
+
