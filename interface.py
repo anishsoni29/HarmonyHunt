@@ -73,3 +73,83 @@ logging.getLogger().addHandler(console)
 
 log = logging.getLogger(__name__)
 
+# MAIN FUNCTION
+
+def main():
+    """ execute the commands given in interface """
+
+    # add
+    if args.subcommands == "add":
+        pathfile = args.pathfile
+        f.add_single(conn, pathfile)
+
+    # update
+    if args.subcommands == "update":
+        title = args.title
+        artist = args.artist
+        album = args.album
+        if title is None:
+            log.error('song title must be given for db search')
+        else:
+            if artist is not None:
+                d.update_artist(title, artist, conn)
+            if album is not None:
+                d.update_album(title, album, conn)
+
+    # remove
+    if args.subcommands == "remove":
+        title = args.title
+        d.drop_song(conn, title)
+        log.info('song %s removed from database', title)
+
+    # construct
+    if args.subcommands == "construct":
+        f.firststep(conn)
+
+    # identify
+    if args.subcommands == 'identify':
+        pathfile = args.pathfile
+        type = args.type
+        if pathfile is None:
+            log.error('expected a pathfile for "identify" command')
+        else:
+            if type == 1:
+                # match by local peak
+                titlelist = f.identify1(conn, pathfile)
+                for title in titlelist:
+                    print('The best match is:', title)
+
+            elif type == 2 or type is None:
+                # match by maximum power per octave (default)
+                titlelist = f.identify2(conn, pathfile)
+                for title in titlelist:
+                    print('The best match is:', title)
+
+            else:
+                log.error('expected 1 or 2 for "type"')
+
+
+    # admin
+    if args.subcommands == 'admin':
+        action = args.action
+        if action == "rm_dup":
+            # remove duplicates
+            d.drop_duplicate(conn)
+            log.info('all duplicates removed from database')
+        else:
+            log.error('action not recognized, please checkout "python interface.py admin -h" for available choices')
+
+    # list
+    if args.subcommands == 'list':
+        titles = d.list_all_songs(conn)
+        for title in titles:
+            print(title)
+        
+
+
+# RUN
+main()
+
+
+# TEST INPUT
+# python interface.py identify --pathfile="./music/snippet/Track54.wav" --type=2
